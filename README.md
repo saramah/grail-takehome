@@ -1,4 +1,5 @@
 # Grail Takehome
+
 This is a finished PoC with a few bugs. I focused on functionality over form; it's ugly but it works.
 
 I would not want to deploy this without doing the following work:
@@ -12,7 +13,9 @@ I would not want to deploy this without doing the following work:
 * when saving an editable field, you must re-search for the participant id to see the changes
 * search validation will pull any number out and does not force term to be solely numeric
 
-
+## To Run
+1. `npm install`
+2. `npm start`
 
 
 # Boilerplate: Getting Started with Create React App
