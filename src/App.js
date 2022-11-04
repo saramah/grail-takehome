@@ -1,36 +1,13 @@
-import { faker } from "@faker-js/faker"
-import React, { useState } from "react"
+import React, { useState } from "react";
 
 import './App.css';
-import { TrialStatus } from "./Participant.tsx";
-import { SearchPage } from './SearchPage.tsx'
+import { SearchPage } from './SearchPage.tsx';
+import { generateTestData } from './helpers.tsx';
 
-const allStatuses = [TrialStatus.active, TrialStatus.withdrawn, TrialStatus.finished]
-
-var nextParticipantId = 0;
-
-const generateTestParticipant = () => {
-  nextParticipantId += 1;
-  return {
-    id: nextParticipantId,
-    name: faker.name.fullName(),
-    address: faker.address.streetAddress(),
-    birthday: faker.date.birthdate(),
-    telephone: faker.phone.number(),
-    status: allStatuses[faker.datatype.number() % (allStatuses.length)]
-  }
-}
-
-const generateTestData = (numRows) => {
-  const testData = Array(numRows).fill(0).map(() => generateTestParticipant())
-  const testMap = new Map()
-  for (const element of testData) {
-    testMap[element.id] = element
-  }
-  return testMap;
-}
-
+export let nextParticipantId = 0;
 const testData = generateTestData(10);
+
+console.log(JSON.stringify(testData, null, 2))
 
 function App() {
 

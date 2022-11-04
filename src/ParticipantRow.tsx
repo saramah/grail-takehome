@@ -17,6 +17,7 @@ interface ParticipantColumnProps {
     editable?: boolean
     participantId?: string
     onSaveClick?: (id: string, valueType: string, newValue: string) => boolean
+    testId?: string
 }
 
 function ParticipantColumn(props: ParticipantColumnProps) {
@@ -40,7 +41,7 @@ function ParticipantColumn(props: ParticipantColumnProps) {
     }
 
     return (
-        <div className="ParticipantColumn">
+        <div className="ParticipantColumn" data-testid={props.testId ?? "participant-column"}>
             <div className="ParticipantRowHeader">{props.header}</div>
             {!isEditing && <div className="ParticipantRowData" onClick={handleDataClick}>{props.field}</div>}
             {isEditing && <input className="ParticipantRowData" type="text" placeholder={props.field} id={editableFieldId} name={editableFieldId} />}
@@ -58,28 +59,32 @@ export function ParticipantRow(props: ParticipantRowProps) {
 
     return (
         <div className="ParticipantRow">
-            <ParticipantColumn header="Id" field={props.participant?.id} />
+            <ParticipantColumn header="Id" testId="participant-id" field={props.participant?.id} />
             <ParticipantColumn header="Name"
+                testId="participant-name"
                 field={props.participant?.name}
                 participantId={props.participant?.id}
                 editable
                 onSaveClick={props.onFieldUpdate} />
             <ParticipantColumn header="Address"
+                testId="participant-address"
                 field={props.participant?.address}
                 participantId={props.participant?.id}
                 editable
                 onSaveClick={props.onFieldUpdate} />
             <ParticipantColumn header="Birthday"
+                testId="participant-birthday"
                 field={props.participant?.birthday?.toLocaleDateString()}
                 participantId={props.participant?.id}
                 editable
                 onSaveClick={props.onFieldUpdate} />
             <ParticipantColumn header="Telephone"
+                testId="participant-telephone"
                 field={props.participant?.telephone}
                 participantId={props.participant?.id}
                 editable
                 onSaveClick={props.onFieldUpdate} />
-            <ParticipantColumn header="Trial Status" field={props.participant?.status} />
+            <ParticipantColumn header="Trial Status" testId="participant-status" field={props.participant?.status} />
         </div >
     )
 }
