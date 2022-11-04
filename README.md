@@ -1,4 +1,21 @@
-# Getting Started with Create React App
+# Grail Takehome
+This is a finished PoC with a few bugs. I focused on functionality over form; it's ugly but it works.
+
+I would not want to deploy this without doing the following work:
+
+1. creating a more comprehensive test suite to catch bugs
+2. add a database for persistance of data
+3. working with a designer to polish the UI
+4. fixing the below known bugs
+
+## Known Bugs
+* when saving an editable field, you must re-search for the participant id to see the changes
+* search validation will pull any number out and does not force term to be solely numeric
+
+
+
+
+# Boilerplate: Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

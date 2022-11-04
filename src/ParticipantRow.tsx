@@ -31,6 +31,7 @@ function ParticipantColumn(props: ParticipantColumnProps) {
         setIsEditing(true);
     }
 
+    // bug: old value remains until you re search for the participant
     const handleSaveClick = () => {
         if (props.onSaveClick) {
             const inputField = document.getElementById(editableFieldId) as HTMLInputElement
