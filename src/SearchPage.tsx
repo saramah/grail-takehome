@@ -6,6 +6,7 @@ import { ParticipantRow } from "./ParticipantRow.tsx";
 export interface SearchPageProps {
     search: (term: string) => boolean
     participant: Participant
+    onFieldUpdate: (id: string, valueType: string, newValue: string) => boolean
 }
 
 export function SearchPage(props: SearchPageProps) {
@@ -27,7 +28,7 @@ export function SearchPage(props: SearchPageProps) {
         return !Number.isNaN(Number.parseInt(input.value));
     }
 
-    const onSearchClick = () => {
+    const handleSearchClick = () => {
         const inputField = document.getElementById(participantId) as HTMLInputElement
 
         if (searchInputIsValid(inputField)) {
@@ -47,10 +48,10 @@ export function SearchPage(props: SearchPageProps) {
             <div className="SearchField">
                 <label htmlFor="participant-id">Participant Id</label>
                 <input type="text" id={participantId} name={participantId} />
-                <button name="Search" onClick={onSearchClick} onSubmit={onSearchClick}>Search</button>
+                <button name="Search" onClick={handleSearchClick}>Search</button>
             </div>
             {errorState && <ErrorBox message={errorState} />}
-            <ParticipantRow participant={props.participant} />
+            <ParticipantRow participant={props.participant} onFieldUpdate={props.onFieldUpdate} />
         </div>
     )
 }

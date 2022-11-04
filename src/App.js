@@ -31,13 +31,12 @@ const generateTestData = (numRows) => {
 }
 
 const testData = generateTestData(10);
-console.log(JSON.stringify(testData, null, 2));
 
 function App() {
 
   const [selectedParticipant, setSelectedParticipant] = useState(undefined);
 
-  const onSearch = (term) => {
+  const handleSearch = (term) => {
     // we'll want a relatively performant algorithm here if we want to future proof it for
     // 100k participants or more. hashing is constant time, so let's just use a Map for now
     // since this is an MVP
@@ -52,9 +51,17 @@ function App() {
     return false;
   }
 
+  const handleFieldUpdate = (id, valueType, newValue) => {
+    const newInfo = testData[id];
+    newInfo[valueType] = newValue;
+    testData[id] = newInfo;
+    setSelectedParticipant(testData[id]);
+    return true;
+  }
+
   return (
     <div className="App">
-      <SearchPage search={onSearch} participant={selectedParticipant} />
+      <SearchPage search={handleSearch} participant={selectedParticipant} onFieldUpdate={handleFieldUpdate} />
     </div>
   );
 }
