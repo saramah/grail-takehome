@@ -4,7 +4,6 @@ import './App.css';
 import { SearchPage } from './SearchPage.tsx';
 import { generateTestData } from './helpers.tsx';
 
-export let nextParticipantId = 0;
 const testData = generateTestData(10);
 
 console.log(JSON.stringify(testData, null, 2))

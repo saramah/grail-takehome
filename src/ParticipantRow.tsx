@@ -41,12 +41,27 @@ function ParticipantColumn(props: ParticipantColumnProps) {
         setIsEditing(false);
     }
 
+    const testIdPrefix = props.testId ?? "participant-column"
+
     return (
-        <div className="ParticipantColumn" data-testid={props.testId ?? "participant-column"}>
-            <div className="ParticipantRowHeader">{props.header}</div>
-            {!isEditing && <div className="ParticipantRowData" onClick={handleDataClick}>{props.field}</div>}
-            {isEditing && <input className="ParticipantRowData" type="text" placeholder={props.field} id={editableFieldId} name={editableFieldId} />}
-            {isEditing && <button name="Search" onClick={handleSaveClick}>Save</button>}
+        <div className="ParticipantColumn" data-testid={testIdPrefix}>
+            <div className="ParticipantRowHeader"
+                data-testid={`${testIdPrefix}-header`}>{props.header}</div>
+            {!isEditing &&
+                <div className="ParticipantRowData"
+                    onClick={handleDataClick}
+                    data-testid={`${testIdPrefix}-field`}>{props.field}</div>}
+            {isEditing &&
+                <>
+                    <input className="ParticipantRowData"
+                        type="text" placeholder={props.field}
+                        id={editableFieldId}
+                        name={editableFieldId}
+                        data-testid={`${testIdPrefix}-editingField`} />
+                    <button name="Search"
+                        onClick={handleSaveClick}
+                        data-testid={`${testIdPrefix}-saveButton`}>Save</button>
+                </>}
         </div >
     );
 }

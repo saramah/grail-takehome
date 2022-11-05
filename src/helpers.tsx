@@ -7,7 +7,7 @@ const allStatuses = Object.keys(TrialStatus)
 export const generateTestParticipant: () => Participant = () => {
     nextParticipantId += 1;
     return {
-        id: nextParticipantId,
+        id: nextParticipantId.toString(),
         name: faker.name.fullName(),
         address: faker.address.streetAddress(),
         birthday: faker.date.birthdate(),
