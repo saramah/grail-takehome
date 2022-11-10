@@ -6,8 +6,6 @@ import { generateTestData } from './helpers.tsx';
 
 const testData = generateTestData(10);
 
-console.log(JSON.stringify(testData, null, 2))
-
 function App() {
 
   const [selectedParticipant, setSelectedParticipant] = useState(undefined);

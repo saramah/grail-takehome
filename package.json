@@ -23,7 +23,10 @@
     ]
   },
   "jest": {
-    "verbose": true
+    "verbose": true,
+    "moduleNameMapper": {
+      "\\.(css|less)$": "./styleMock.js"
+    }
   },
   "browserslist": {
     "production": [

@@ -51,7 +51,7 @@ test('renders participant row', () => {
     expect(statusElement.textContent).toEqual(testParticipant.status);
 });
 
-test('clicking on an element calls onFieldUpdate and updates the field', () => {
+test('clicking on an element calls onFieldUpdate', () => {
     const testParticipant = generateTestParticipant()
     const fieldUpdateFn = jest.fn()
 
@@ -84,8 +84,4 @@ test('clicking on an element calls onFieldUpdate and updates the field', () => {
     });
 
     expect(fieldUpdateFn).toHaveBeenCalledTimes(1);
-
-    const updatedNameElement = screen.getByTestId("participant-name-field");
-    expect(updatedNameElement).toBeInTheDocument();
-    expect(updatedNameElement.textContent).toEqual("A new name");
 });
