@@ -28,10 +28,10 @@ function App() {
   }
 
   const handleFieldUpdate = (id, valueType, newValue) => {
-    const newInfo = testData[id];
+    const newInfo = { ...testData[id] };
     newInfo[valueType] = newValue;
     testData[id] = newInfo;
-    setSelectedParticipant(testData[id]);
+    setSelectedParticipant(newInfo);
     return true;
   }
 

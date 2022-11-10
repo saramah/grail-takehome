@@ -41,7 +41,7 @@ function ParticipantColumn(props: ParticipantColumnProps) {
         setIsEditing(false);
     }
 
-    const testIdPrefix = props.testId ?? "participant-column"
+    const testIdPrefix = props.testId ?? "participant-column";
 
     return (
         <div className="ParticipantColumn" data-testid={testIdPrefix}>
